@@ -17,9 +17,22 @@ module.exports = function(grunt) {
       },
     },
 
-
     jscs: {
-      src: ['lib/**/*.js', 'test/**/*.js'],
+      gruntfile: {
+        files: {
+          src: '<%= jshint.gruntfile.src %>'
+        }
+      },
+      test: {
+        files: {
+          src: '<%= jshint.test.src %>'
+        }
+      },
+      lib: {
+        files: {
+          src: '<%= jshint.lib.src %>'
+        }
+      },
       options: {
         config: '.jscsrc'
       }
@@ -42,15 +55,15 @@ module.exports = function(grunt) {
     watch: {
       gruntfile: {
         files: '<%= jshint.gruntfile.src %>',
-        tasks: ['jshint:gruntfile']
+        tasks: ['jscs:gruntfile', 'jshint:gruntfile']
       },
       lib: {
         files: '<%= jshint.lib.src %>',
-        tasks: ['jshint:lib', 'mochaTest']
+        tasks: ['jscs:lib', 'jshint:lib', 'mochaTest']
       },
       test: {
         files: '<%= jshint.test.src %>',
-        tasks: ['jshint:test', 'mochaTest']
+        tasks: ['jscs:test', 'jshint:test', 'mochaTest']
       },
       options: {
         interrupt: true
