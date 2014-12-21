@@ -52,6 +52,8 @@ exports.template = function(grunt, init, done) {
       'chai': '1.x',
       'sinon': '1.x',
       'sinon-chai': '2.x',
+      'jshint': 'latest',
+      'jscs': 'latest',
       'grunt-contrib-jshint': '~0.10.0',
       'grunt-jscs': '~1.0.0',
       'grunt-mocha-test': '~0.12.4',
