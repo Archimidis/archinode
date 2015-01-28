@@ -44,7 +44,7 @@ exports.template = function(grunt, init, done) {
   ], function(err, props) {
     props.keywords = [];
     props.dependencies = {
-      'lodash': '~2.4.1',
+      'lodash': '~3.0.0',
       'log4js': '~0.6.20'
     };
     props.devDependencies = {
