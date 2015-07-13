@@ -1,6 +1,11 @@
 'use strict';
 
 module.exports = function(grunt) {
+  require('jit-grunt')(grunt, {
+    'validate-package': 'grunt-nsp-package',
+    'validate-shrinkwrap': 'grunt-nsp-shrinkwrap'
+  });
+
   grunt.initConfig({
     jshint: {
       options: {
@@ -18,14 +23,12 @@ module.exports = function(grunt) {
     },
 
     jscs: {
+      options: {
+        config: '.jscsrc'
+      },
       gruntfile: {
         files: {
           src: '<%= jshint.gruntfile.src %>'
-        }
-      },
-      test: {
-        files: {
-          src: '<%= jshint.test.src %>'
         }
       },
       lib: {
@@ -33,8 +36,10 @@ module.exports = function(grunt) {
           src: '<%= jshint.lib.src %>'
         }
       },
-      options: {
-        config: '.jscsrc'
+      test: {
+        files: {
+          src: '<%= jshint.test.src %>'
+        }
       }
     },
 
@@ -50,33 +55,9 @@ module.exports = function(grunt) {
       all: {
         src: ['test/**/*_spec.js']
       }
-    },
-
-    watch: {
-      gruntfile: {
-        files: '<%= jshint.gruntfile.src %>',
-        tasks: ['jscs:gruntfile', 'jshint:gruntfile']
-      },
-      lib: {
-        files: '<%= jshint.lib.src %>',
-        tasks: ['jscs:lib', 'jshint:lib', 'mochaTest']
-      },
-      test: {
-        files: '<%= jshint.test.src %>',
-        tasks: ['jscs:test', 'jshint:test', 'mochaTest']
-      },
-      options: {
-        interrupt: true
-      }
-    },
+    }
   });
 
-  // These plugins provide necessary tasks.
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-jscs');
-  grunt.loadNpmTasks('grunt-mocha-test');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-
-  // Default task.
   grunt.registerTask('default', ['jscs', 'jshint', 'mochaTest']);
+  grunt.registerTask('security', ['validate-package', 'validate-shrinkwrap']);
 };

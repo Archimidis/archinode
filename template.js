@@ -44,20 +44,20 @@ exports.template = function(grunt, init, done) {
   ], function(err, props) {
     props.keywords = [];
     props.dependencies = {
-      'lodash': '~3.0.0',
-      'log4js': '~0.6.20'
+      'lodash': '^3.10.0',
+      'log4js': '~0.6.26'
     };
     props.devDependencies = {
-      'mocha': '2.x',
-      'chai': '1.x',
-      'sinon': '1.x',
-      'sinon-chai': '2.x',
+      'mocha': 'latest',
+      'chai': 'latest',
+      'sinon': 'latest',
+      'sinon-chai': 'latest',
       'jshint': 'latest',
       'jscs': 'latest',
-      'grunt-contrib-jshint': '~0.10.0',
-      'grunt-jscs': '~1.0.0',
-      'grunt-mocha-test': '~0.12.4',
-      'grunt-contrib-watch': '~0.6.1',
+      'jit-grunt': '^0.9.1',
+      'grunt-contrib-jshint': '^0.11.2',
+      'grunt-jscs': '^1.8.0',
+      'grunt-mocha-test': '^0.12.7'
     };
 
     // Files to copy (and process).
