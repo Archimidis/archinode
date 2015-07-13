@@ -20,12 +20,14 @@
   "smarttabs": true,
   "es3": false,
   "expr": true,
+  "predef": [ "-Promise" ],
 
   "globals": {
     "alert": false,
     "task": false,
     "mocha": false,
     "describe": false,
+    "context": false,
     "it": false,
     "before": false,
     "beforeEach": false,
